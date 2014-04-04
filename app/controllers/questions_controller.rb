@@ -11,7 +11,7 @@ class QuestionsController < InheritedResources::Base
   private
 
   def permitted_params
-    params.permit(:question, [
+    params.permit(question: [
       :title, :content
     ])
   end

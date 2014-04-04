@@ -1,6 +1,6 @@
 class AnswersController < InheritedResources::Base
 
-  belongs_to :question, model_name: Question
+  belongs_to :question
   before_filter :authenticate_user!
 
   respond_to :html, :js
@@ -9,13 +9,13 @@ class AnswersController < InheritedResources::Base
     @answer = Answer.new(permitted_params[:answer])
     @answer.user = current_user
     @answer.question = parent
-    create!
+    create! { question_url(parent) }
   end
 
   private
 
   def permitted_params
-    params.permit(:question, [
+    params.permit(answer: [
       :title, :content
     ])
   end

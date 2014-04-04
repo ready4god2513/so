@@ -1,5 +1,7 @@
+= title("Latest Questions")
 - collection.each do |question|
   .row
     .col-lg-12
-      %h3= link_to question.title, question
-      %p= "Posted #{time_ago_in_words(question.created_at) ago} by #{question.user}"
+      .well
+        %h3= link_to question.title, question
+        %p= "Posted #{time_ago_in_words(question.created_at)} ago"

@@ -1,3 +1,8 @@
-= simple_form_for[question, Answer.new], remote: true, html: {id: "new-answer-form"} do |f|
-  = f.input :content, label: "Answer", input_html: { class: "new-answer-content" }
-  = f.submit "Submit Answer"
+- if user_signed_in?
+  %h5 Got An Answer?
+  = simple_form_for [question, Answer.new], remote: true, html: { id: "new-answer-form" } do |f|
+    = f.input :content, label: "Answer", input_html: { class: "new-answer-content" }
+    = f.submit "Submit Answer", class: "btn btn-primary"
+- else
+  = link_to "Sign in to Post an Answer", new_user_session_path, class: "btn btn-info"
+%hr

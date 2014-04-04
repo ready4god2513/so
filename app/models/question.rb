@@ -8,4 +8,6 @@ class Question < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, use: [:slugged, :finders]
 
+  default_scope order: "created_at desc" # Don't use a default_scope.  Bad things happen
+
 end
