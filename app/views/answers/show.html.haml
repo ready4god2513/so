@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Slug:
+  = @answer.slug
+%p
+  %b Content:
+  = @answer.content
+%p
+  %b Question:
+  = @answer.question
+%p
+  %b User:
+  = @answer.user
+
+= link_to 'Edit', edit_answer_path(@answer)
+\|
+= link_to 'Back', answers_path

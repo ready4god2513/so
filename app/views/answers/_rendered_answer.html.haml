@@ -1,0 +1,5 @@
+.row
+  .col-lg-12
+    %p= answer.content
+    %p
+      %small= "Posted #{time_ago_in_words(answer.created_at) ago} by #{answer.user}"

@@ -1,0 +1,3 @@
+= simple_form_for[question, Answer.new], remote: true, html: {id: "new-answer-form"} do |f|
+  = f.input :content, label: "Answer", input_html: { class: "new-answer-content" }
+  = f.submit "Submit Answer"

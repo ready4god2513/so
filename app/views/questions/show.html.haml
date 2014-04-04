@@ -1,0 +1,8 @@
+%h1= resource.title
+%p= resource.content
+
+= render "answers/form", question: resource
+
+#question-answers
+  - resource.answers.each do |answer|
+    = render "answers/rendered_answer", answer: answer

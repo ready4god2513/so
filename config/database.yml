@@ -1,60 +1,26 @@
-# PostgreSQL. Versions 8.2 and up are supported.
+# Add your username and password to your `.bash_profile` or equivalent.
+# Example
+#  export DB_USER_POSTGRES_USERNAME=andrew
+#  export DB_USER_POSTGRES_PASSWORD=andrew
 #
-# Install the pg driver:
-#   gem install pg
-# On OS X with Homebrew:
-#   gem install pg -- --with-pg-config=/usr/local/bin/pg_config
-# On OS X with MacPorts:
-#   gem install pg -- --with-pg-config=/opt/local/lib/postgresql84/bin/pg_config
-# On Windows:
-#   gem install pg
-#       Choose the win32 build.
-#       Install PostgreSQL and put its /bin directory on your path.
-#
-# Configure Using Gemfile
-# gem 'pg'
-#
+# Note:  This will use (or create) a new database for each branch in the project.
+#        Just run `rake db:rebuild` after creating or switching to a new branch.
+#        After that you won't need to rebuild the db when switching branches!  :)
+
 development:
   adapter: postgresql
-  encoding: unicode
-  database: so_development
-  pool: 5
-  username: so
-  password:
-
-  # Connect on a TCP socket. Omitted by default since the client uses a
-  # domain socket that doesn't need configuration. Windows does not have
-  # domain sockets, so uncomment these lines.
-  #host: localhost
-
-  # The TCP port the server listens on. Defaults to 5432.
-  # If your server runs on a different port number, change accordingly.
-  #port: 5432
-
-  # Schema search path. The server defaults to $user,public
-  #schema_search_path: myapp,sharedapp,public
-
-  # Minimum log levels, in increasing order:
-  #   debug5, debug4, debug3, debug2, debug1,
-  #   log, notice, warning, error, fatal, and panic
-  # Defaults to warning.
-  #min_messages: notice
-
-# Warning: The database defined as "test" will be erased and
-# re-generated from your development database when you run "rake".
-# Do not set this db to the same as development or production.
+  encoding: utf8
+  database: <%= "#{Rails.application.class.parent_name}-dev-#{`git rev-parse --abbrev-ref HEAD`.strip}".downcase %>
+  username: <%= ENV['DB_USER_POSTGRES_USERNAME'] %>
+  password: <%= ENV['DB_USER_POSTGRES_PASSWORD'] %>
+  host: localhost
+  port: 5432
+ 
 test:
   adapter: postgresql
-  encoding: unicode
-  database: so_test
-  pool: 5
-  username: so
-  password:
-
-production:
-  adapter: postgresql
-  encoding: unicode
-  database: so_production
-  pool: 5
-  username: so
-  password:
+  encoding: utf8
+  database: <%= "#{Rails.application.class.parent_name}-test-#{`git rev-parse --abbrev-ref HEAD`.strip}".downcase %>
+  username: <%= ENV['DB_USER_POSTGRES_USERNAME'] %>
+  password: <%= ENV['DB_USER_POSTGRES_PASSWORD'] %>
+  host: localhost
+  port: 5432
