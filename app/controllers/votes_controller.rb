@@ -4,9 +4,21 @@ class VotesController < InheritedResources::Base
   actions :create, :update, :destroy
 
   before_filter :authenticate_user!
+  respond_to :html, :js
 
   def create
-    create! { parent }
+    @vote = Vote.new(permitted_params[:vote])
+    @vote.user = current_user
+    @vote.voteable = parent
+    create!
+  end
+
+  private
+
+  def permitted_params
+    params.permit(vote: [
+      :direction
+    ])
   end
 
 end

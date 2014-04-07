@@ -1,6 +1,7 @@
 class Vote < ActiveRecord::Base
 
   DIRECTIONS = [1, -1]
+  VOTEABLE = [Answer, Comment, Question]
 
   belongs_to :voteable, polymorphic: true
   belongs_to :user

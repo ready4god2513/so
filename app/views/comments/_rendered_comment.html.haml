@@ -1,5 +1,9 @@
-%p.comment
-  = comment.content
-  %br
-  = render "components/poster", postable: comment
+.row
+  .col-sm-1
+    = render "votes/voting", voteable: comment
+  .col-sm-11
+    %p.comment
+      = comment.content
+      %br
+      = render "components/poster", postable: comment
 %hr

@@ -1,0 +1,5 @@
+$("#comments-<%= resource.commentable.class.name.downcase %>-<%= resource.commentable.id %>")
+  .append("<%= j render "rendered_comment", comment: resource %>");
+  
+$(".comment-field-<%= resource.commentable.class.name.downcase %>-<%= resource.commentable.id %>")
+  .val("");

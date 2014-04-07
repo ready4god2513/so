@@ -1,6 +1,6 @@
 - if user_signed_in?
   = simple_form_for([commentable, comment], remote: true) do |f|
-    = f.input :content, label: "Share a Comment"
+    = f.input :content, label: "Share a Comment", input_html: { class: "comment-field-#{commentable.class.name.downcase}-#{commentable.id}" }
     = f.submit "Post Comment", class: "btn btn-info"
 - else
   %small= link_to "Sign In to Comment", new_user_session_path(back_to: url_for(resource))
