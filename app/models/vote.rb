@@ -8,6 +8,7 @@ class Vote < ActiveRecord::Base
 
   validates :direction, presence: true, inclusion: { in: DIRECTIONS } # -1 = down; 1 = up;
   validates_presence_of :user_id, :voteable_id
+  validates_uniqueness_of :user_id, scope: :voteable_id
 
   after_save :cache_vote_count_on_parent
 
