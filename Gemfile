@@ -26,6 +26,7 @@ gem "cocoon"
 gem "font-awesome-less"
 gem "airbrake"
 gem "delorean"
+gem "unicorn"
 
 # Use CoffeeScript for .js.coffee assets and views
 gem "coffee-rails", "~> 4.0.0"
