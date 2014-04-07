@@ -3,7 +3,8 @@ class Vote < ActiveRecord::Base
   belongs_to :voteable, polymorphic: true
   belongs_to :user
 
-  validates :direction, inclusion: { in: [-1, 1] } # -1 = down; 1 = up;
+  validates :direction, presence: true, inclusion: { in: [-1, 1] } # -1 = down; 1 = up;
+  validates_presence_of :user_id, :voteable_id
 
   after_save :cache_vote_count_on_parent
 
