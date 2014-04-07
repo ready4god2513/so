@@ -5,7 +5,7 @@ class Answer < ActiveRecord::Base
   has_many :comments, as: :commentable
   has_many :votes, as: :voteable
 
-  validates_presence_of :content, :question_id, :user_id, :commentable_id
+  validates_presence_of :content, :question_id, :user_id
 
   extend FriendlyId
   friendly_id :random_id, use: [:slugged, :finders]
