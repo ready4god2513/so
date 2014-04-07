@@ -1,0 +1,9 @@
+.col-sm-1
+  = render "votes/voting", voteable: question
+.col-sm-11
+  %h3= link_to question.title, question
+  %p
+    = render "components/poster", postable: question
+
+  - if local_assigns.has_key?(:show_comments) && show_comments
+    = render "comments/comment_area", commentable: resource

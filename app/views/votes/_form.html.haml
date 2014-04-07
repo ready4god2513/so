@@ -1,0 +1,3 @@
+= simple_form_for([voteable, Vote.new], remote: true) do |f|
+  = f.input :direction, as: :hidden, input_html: { value: direction }
+  = f.submit Vote.direction_to_string(direction).html_safe, class: "btn btn-warning"

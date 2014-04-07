@@ -1,0 +1,3 @@
+%div{class: "voteable-#{voteable.class.name.downcase}-#{voteable.id}"}
+  - Vote::DIRECTIONS.each do |direction|
+    = render "votes/form", voteable: voteable, direction: direction

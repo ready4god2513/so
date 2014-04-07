@@ -1,11 +1,13 @@
 = title(resource.title)
-%p
-  %small= "Posted #{time_ago_in_words(resource.created_at)} ago"
-%p= resource.content
-%hr
+.row
+  = render "info", question: resource, show_comments: true
 
-= render "answers/form", question: resource
+.row
+  .col-sm-11.col-sm-offset-1
+    %hr
 
-#question-answers
-  - resource.answers.each do |answer|
-    = render "answers/rendered_answer", answer: answer
+    = render "answers/form", question: resource
+
+    #question-answers
+      - resource.answers.each do |answer|
+        = render "answers/rendered_answer", answer: answer

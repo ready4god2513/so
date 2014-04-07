@@ -1,6 +1,11 @@
 .row
   .col-lg-12
     .well
-      %p= answer.content
-      %p
-        %small= "Posted #{time_ago_in_words(answer.created_at)} ago"
+      .row
+        .col-sm-1
+          = render "votes/voting", voteable: answer
+        .col-sm-11
+          %p= answer.content
+          %p
+            = render "components/poster", postable: answer
+          = render "comments/comment_area", commentable: resource

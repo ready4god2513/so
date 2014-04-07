@@ -1,0 +1,3 @@
+%small.posted-by
+  = "Posted #{time_ago_in_words(postable.created_at)} ago by"
+  = link_to postable.user.username, postable.user

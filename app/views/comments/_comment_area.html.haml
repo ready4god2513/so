@@ -1,0 +1,5 @@
+.comment-area
+  .comments{id: "comments-#{commentable.class.name.downcase}-#{commentable.id}"}
+    - commentable.comments.each do |comment|
+      = render "comments/rendered_comment", comment: comment
+  = render "comments/form", commentable: commentable, comment: Comment.new
